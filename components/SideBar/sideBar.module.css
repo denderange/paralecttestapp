@@ -1,0 +1,20 @@
+.navlink{
+  width: "100%";  
+  height: 42px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 13px 10px;
+  border-radius: 8px;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+
+.navlink:first-child{
+  margin-bottom: 16px;
+}
+
+.active{
+  font-weight: 600;
+  background-color: var(--color-purple-200);
+  color: var(--color-purple-500);
+}

@@ -1,5 +1,6 @@
 import { createTheme } from "@mantine/core";
+import { inter } from "./pages/fonts";
 
 export const theme = createTheme({
-  /* Put your mantine theme override here */
+  fontFamily: inter.style.fontFamily,
 });
