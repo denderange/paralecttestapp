@@ -3,8 +3,10 @@ import "../styles/global.css";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "../theme";
+import Layout from "../components/Layout";
+import type { AppProps } from "next/app";
 
-export default function App({ Component, pageProps }: any) {
+export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<MantineProvider theme={theme}>
 			<Head>
@@ -18,7 +20,9 @@ export default function App({ Component, pageProps }: any) {
 					href="/favicon.ico"
 				/>
 			</Head>
-			<Component {...pageProps} />
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
 		</MantineProvider>
 	);
 }

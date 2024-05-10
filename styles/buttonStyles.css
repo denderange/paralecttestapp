@@ -1,0 +1,40 @@
+.btnPrimaryM{
+  padding: 10px 20px;
+} 
+
+.btnPrimaryS{
+  padding: 6px 20px;
+}
+
+.btnPrimaryM, .btnPrimaryS{
+  color: var(--color-white);
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--color-purple-500);
+  border-radius: 8px;
+  width: max-content;
+  transition: all 0.3s ease-in-out;
+}
+
+.btnPrimaryM:hover, .btnPrimaryS:hover{
+  background-color: var(--color-purple-400);
+}
+
+.btnPrimaryM:active, .btnPrimaryS:active{
+  background-color: var(--color-purple-600);
+}
+
+/* ------ */
+.btn-text-grey{
+  color: var(--color-grey-600);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-text-grey:hover{
+  color: var(--color-purple-500);
+}
+
+.btn-text-grey:active{
+  color: var(--color-purple-600);
+}

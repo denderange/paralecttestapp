@@ -18,7 +18,12 @@
 
   /* Yellow */
   --color-yellow: #FAB005;
+
+  /* ------ */
+  --indexItem: calc(1vw + 1vh);
 }
+
+@import './buttonStyles.css';
 
 body{
   color: var(--color-black);
@@ -31,4 +36,9 @@ body{
 a{
   text-decoration: none;
   color: inherit;
+}
+
+p{
+  margin: 0;
+  padding: 0;
 }

@@ -1,0 +1,10 @@
+.filterInput input{
+  height: 40px;
+  min-height: 40px;
+}
+
+.filterInput label{
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 700;
+}

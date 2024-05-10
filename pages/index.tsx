@@ -1,25 +1,18 @@
-import { Container, Flex } from "@mantine/core";
-import SideBar from "../components/SideBar/SideBar";
+import { Container, Stack } from "@mantine/core";
+import Filters from "../components/Filters/Filters";
+import EmptyMovie from "../components/EmptyMovie/EmptyMovie";
+import Movies from "../components/Movies/Movies";
 
 export default function IndexPage() {
-	return (
-		<Container size={1440}>
-			<Flex gap={12}>
-				<SideBar />
+	const findedMoviesArrayFetchedSampleEmpty = [];
 
-				<Container
-					size={980}
-					mt={40}
-					p={0}
-					style={{ margin: "0 auto" }}
-					bg={"var(--color-purple-200)"}
-				>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat,
-					voluptate veniam commodi inventore sit numquam, esse ipsam cupiditate
-					corporis quod modi expedita, animi autem. Doloremque neque vitae
-					numquam eius cumque.
-				</Container>
-			</Flex>
-		</Container>
+	return (
+		<>
+			<Stack style={{ margin: "0 auto" }}>
+				<Filters />
+				{findedMoviesArrayFetchedSampleEmpty.length > 0 && <EmptyMovie />}
+				<Movies />
+			</Stack>
+		</>
 	);
 }

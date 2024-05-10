@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./sideBar.module.css";
 
 const navLinks = [
-	{ title: "Movies", link: "/movies" },
+	{ title: "Movies", link: "/" },
 	{ title: "Rated movies", link: "/rated-movies" },
 ];
 
@@ -13,12 +13,7 @@ const SideBar = () => {
 	const [active, setActive] = React.useState("Movies");
 
 	return (
-		<Stack
-			p={24}
-			w={280}
-			h="100vh"
-			bg={"var(--color-purple-100)"}
-		>
+		<Stack className={styles.container}>
 			<Logo />
 
 			<nav>
@@ -28,7 +23,6 @@ const SideBar = () => {
 						href={link}
 						className={`${styles.navlink} ${active === title && styles.active}`}
 						onClick={(e) => {
-							e.preventDefault();
 							setActive(title);
 						}}
 					>

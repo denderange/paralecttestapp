@@ -1,16 +1,15 @@
 import { Flex, Text } from "@mantine/core";
 import React from "react";
-import { poppins } from "../../pages/fonts";
+import { poppins } from "../../styles/fonts";
 import Image from "next/image";
-import iconLogo from "../../public/icons/icon-logo.svg";
+import IconLogo from "../../public/icons/icon-logo.svg";
 import styles from "./logo.module.css";
 
 const Logo = () => {
 	return (
 		<Flex className={styles.logoContainer}>
-			<Image
+			<IconLogo
 				className={styles.img}
-				src={iconLogo}
 				alt="logo"
 			/>
 			<Text
