@@ -1,26 +1,8 @@
-import {
-	Container,
-	Flex,
-	Group,
-	Select,
-	Stack,
-	Title,
-	Text,
-	Button,
-	Box,
-} from "@mantine/core";
-import IconArrow from "../../public/icons/icon-arrow.svg";
-import Image from "next/image";
+import { Flex, Group, Select, Stack, Title, Button, Box } from "@mantine/core";
+import Arrow from "../../public/icons/icon-arrow.svg";
 import styles from "./filters.module.css";
 
 const Filters = () => {
-	const iconArrow = (
-		<Image
-			src={IconArrow}
-			alt=""
-		/>
-	);
-
 	return (
 		<Box
 			size={980}
@@ -46,7 +28,7 @@ const Filters = () => {
 						placeholder="Select genre"
 						data={["React", "Angular", "Vue", "Svelte"]}
 						w={283}
-						rightSection={iconArrow}
+						rightSection={<Arrow />}
 					/>
 				</Stack>
 				<Stack>
@@ -56,7 +38,7 @@ const Filters = () => {
 						placeholder="Select release year"
 						data={["React", "Angular", "Vue", "Svelte"]}
 						w={283}
-						rightSection={iconArrow}
+						rightSection={<Arrow />}
 					/>
 				</Stack>
 				<Stack>
@@ -97,7 +79,7 @@ const Filters = () => {
 					placeholder="Most popular"
 					data={["React", "Angular", "Vue", "Svelte"]}
 					w={283}
-					rightSection={iconArrow}
+					rightSection={<Arrow />}
 				/>
 			</Flex>
 		</Box>

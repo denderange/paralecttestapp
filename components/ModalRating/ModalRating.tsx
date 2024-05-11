@@ -1,24 +1,59 @@
-import { Modal } from "@mantine/core";
+import {
+	Box,
+	Button,
+	Flex,
+	Group,
+	Modal,
+	Rating,
+	Text,
+	UnstyledButton,
+} from "@mantine/core";
 import styles from "./modalRating.module.css";
+import IconStar from "../../public/icons/icon-star.svg";
+import IconClose from "../../public/icons/icon-close-small.svg";
 
 type ModalRatingProps = {
 	opened: boolean;
+	movieTitle: string;
 	close: () => void;
 };
 
-const ModalRating = ({ opened, close }: ModalRatingProps) => {
+const ModalRating = ({ opened, close, movieTitle }: ModalRatingProps) => {
+	const movieRating = 7;
+
 	return (
 		<Modal
+			className={styles.modal}
+			centered
+			title="Your rating"
+			transitionProps={{ transition: "rotate-left" }}
 			opened={opened}
 			onClose={close}
-			centered
+			size={380}
+			closeButtonProps={{
+				icon: (
+					<IconClose
+						size={20}
+						stroke={1.5}
+					/>
+				),
+			}}
 		>
-			<div>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis
-				exercitationem consectetur cum deserunt necessitatibus aliquam eaque!
-				Molestias corporis officiis blanditiis laborum aspernatur quasi nemo
-				quod, necessitatibus doloribus aliquid, dolore ducimus?
-			</div>
+			<Text className={styles.title}>{movieTitle}</Text>
+			<Rating
+				className={styles.rating}
+				defaultValue={2}
+				count={10}
+				value={movieRating}
+				emptySymbol={<IconStar style={{ color: "red" }} />}
+				fullSymbol={<IconStar className={styles.starFilled} />}
+			/>
+			<Box>
+				<Button className="btnPrimaryM">Save</Button>
+				<UnstyledButton className="btn-text-purple">
+					Remove rating
+				</UnstyledButton>
+			</Box>
 		</Modal>
 	);
 };

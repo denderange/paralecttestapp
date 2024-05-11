@@ -30,6 +30,7 @@ const Movies = () => {
 			<ModalRating
 				opened={opened}
 				close={close}
+				movieTitle="The Batman"
 			/>
 		</>
 	);
