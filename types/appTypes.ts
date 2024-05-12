@@ -1,7 +1,8 @@
 export type MovieHadingProps = {
 	title: string;
-	year: number | string;
-	rating: string;
+	year: string;
+	rating: number;
+	popularity: number
 };
 
 export type SingleMovie = {

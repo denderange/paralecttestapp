@@ -16,7 +16,7 @@ const ButtonRating = ({ rating, btnClick }: ButtonRatingProps) => {
 			>
 				<HoverCard.Target>
 					<UnstyledButton onClick={btnClick}>
-						<IconStar className={styles.star} />
+						<IconStar className={`${styles.star} ${styles.rated}`} />
 					</UnstyledButton>
 				</HoverCard.Target>
 				<HoverCard.Dropdown className={styles.dropdown}>

@@ -55,3 +55,8 @@
 .btn-text-purple:active{
   color: var(--color-purple-600);
 }
+
+.btn-search{
+  margin: 0px;
+  min-width: 90px;
+}

@@ -3,7 +3,7 @@ import styles from "./movieHeading.module.css";
 import IconStar from "../../public/icons/icon-star.svg";
 import { MovieHadingProps } from "../../types/appTypes";
 
-const MovieHading = ({ title, year, rating }: MovieHadingProps) => {
+const MovieHading = ({ title, year, rating, popularity }: MovieHadingProps) => {
 	return (
 		<Box>
 			<Title
@@ -17,7 +17,7 @@ const MovieHading = ({ title, year, rating }: MovieHadingProps) => {
 			<Group gap={4}>
 				<IconStar className={styles.starYellow} />
 				<Text className={styles.rating}>
-					{rating} <span>(2.9M)</span>
+					{rating.toFixed(1)} <span>({popularity})</span>
 				</Text>
 			</Group>
 		</Box>

@@ -3,6 +3,7 @@ import Logo from "../components/Logo/Logo";
 import Image from "next/image";
 import styles from "../styles/404.module.css";
 import imgNotFound from "../public/images/image-404.png";
+import Link from "next/link";
 
 const NotFound = () => {
 	return (
@@ -19,7 +20,12 @@ const NotFound = () => {
 					<Text className={styles.text}>
 						We can&apos;t find the page you are looking for
 					</Text>
-					<Button className="btnPrimaryM">Go Home</Button>
+					<Link
+						className="btnPrimaryM"
+						href="/"
+					>
+						Go Home
+					</Link>
 				</Stack>
 			</Flex>
 		</Container>

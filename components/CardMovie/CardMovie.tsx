@@ -9,7 +9,7 @@ import ButtonRating from "../ButtonRating/ButtonRating";
 
 type CardMovieProps = {
 	poster: string | null;
-	genres: string;
+	genres: string[] | string;
 	btnClick: () => void;
 };
 
@@ -20,6 +20,7 @@ const CardMovie = ({
 	title,
 	year,
 	rating,
+	popularity,
 }: CardMovieProps & MovieHadingProps) => {
 	// const handleBtnStar = (
 	// 	e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
@@ -37,7 +38,7 @@ const CardMovie = ({
 				<Image
 					className={styles.img}
 					src={poster ? poster : imgNoPoster}
-					alt=""
+					alt={title}
 					width={119}
 					height={170}
 				/>
@@ -47,6 +48,7 @@ const CardMovie = ({
 						title={title}
 						year={year}
 						rating={rating}
+						popularity={popularity}
 					/>
 
 					<Text className={styles.genres}>

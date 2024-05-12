@@ -1,8 +1,17 @@
 import { Flex, Group, Select, Stack, Title, Button, Box } from "@mantine/core";
 import Arrow from "../../public/icons/icon-arrow.svg";
 import styles from "./filters.module.css";
+import { useState } from "react";
 
-const Filters = () => {
+interface Genre {
+	id: number;
+	name: string;
+}
+
+const Filters = ({ genres }: any) => {
+	// const genreNames: string[] = genres.map((genre: Genre) => genre.name);
+	const genreNames = [""];
+
 	return (
 		<Box
 			size={980}
@@ -24,9 +33,9 @@ const Filters = () => {
 				<Stack>
 					<Select
 						className={styles.filterInput}
-						label="Genres"
-						placeholder="Select genre"
-						data={["React", "Angular", "Vue", "Svelte"]}
+						label="Ganres"
+						placeholder="Select ganre"
+						data={genreNames}
 						w={283}
 						rightSection={<Arrow />}
 					/>

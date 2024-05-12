@@ -4,9 +4,9 @@ import styles from "./movies.module.css";
 import ModalRating from "../ModalRating/ModalRating";
 import { useDisclosure } from "@mantine/hooks";
 
-const Movies = () => {
+const Movies = ({ movies }: any) => {
 	const [opened, { open, close }] = useDisclosure(false);
-	const sampleDelMovies = Array.apply(null, Array(10));
+	// const sampleDelMovies = Array.apply(null, Array(10));
 
 	return (
 		<>
@@ -14,15 +14,16 @@ const Movies = () => {
 				cols={2}
 				mt={10}
 			>
-				{sampleDelMovies.map((movie, index) => (
+				{movies.map((movie: any) => (
 					<CardMovie
-						title="The Batman"
+						title={movie.title}
 						poster=""
-						year="2022"
-						rating="7.8"
+						year={movie.release_date}
+						rating={movie.vote_average}
 						genres="Action, Crime, Drama"
-						key={index}
+						key={movie.id}
 						btnClick={open}
+						popularity={movie.popularity}
 					/>
 				))}
 			</SimpleGrid>
