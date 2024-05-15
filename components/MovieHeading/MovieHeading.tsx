@@ -2,6 +2,7 @@ import { Box, Group, Title, Text } from "@mantine/core";
 import styles from "./movieHeading.module.css";
 import IconStar from "../../public/icons/icon-star.svg";
 import { MovieHadingProps } from "../../types/appTypes";
+import { formatPopularity } from "../../lib/formatPopularity";
 
 const MovieHading = ({ title, year, rating, popularity }: MovieHadingProps) => {
 	return (
@@ -12,12 +13,12 @@ const MovieHading = ({ title, year, rating, popularity }: MovieHadingProps) => {
 			>
 				{title}
 			</Title>
-			<Text className={styles.year}>{year}</Text>
+			<Text className={styles.year}>{year.slice(0, 4)}</Text>
 
 			<Group gap={4}>
 				<IconStar className={styles.starYellow} />
 				<Text className={styles.rating}>
-					{rating.toFixed(1)} <span>({popularity})</span>
+					{rating.toFixed(1)} <span>({formatPopularity(popularity)})</span>
 				</Text>
 			</Group>
 		</Box>

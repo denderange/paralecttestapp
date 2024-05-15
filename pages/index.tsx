@@ -7,15 +7,15 @@ import { getGenres, getMovies } from "../lib/requests/moviesRequests";
 export default function IndexPage({ genres, results }: any) {
 	const findedMoviesArrayFetchedSampleEmpty = [];
 
-	// console.log(results);
-	// console.log(genres);
-
 	return (
 		<>
 			<Stack style={{ margin: "0 auto" }}>
 				<Filters genres={genres} />
-				{findedMoviesArrayFetchedSampleEmpty.length > 0 && <EmptyMovie />}
-				<Movies movies={results} />
+				{findedMoviesArrayFetchedSampleEmpty.length !== 0 ? (
+					<EmptyMovie />
+				) : (
+					<Movies movies={results} />
+				)}
 			</Stack>
 		</>
 	);

@@ -1,11 +1,11 @@
-import styles from "./cardMovie.module.css";
-import imgNoPoster from "../../public/images/no-poster.png";
 import { Group, Stack, Text } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import MovieHeading from "../MovieHeading/MovieHeading";
-import type { MovieHadingProps } from "../../types/appTypes";
 import ButtonRating from "../ButtonRating/ButtonRating";
+import type { MovieHadingProps } from "../../types/appTypes";
+import imgNoPoster from "../../public/images/no-poster.png";
+import styles from "./cardMovie.module.css";
 
 type CardMovieProps = {
 	poster: string | null;

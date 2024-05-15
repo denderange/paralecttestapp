@@ -1,12 +1,6 @@
-import {
-	Box,
-	Container,
-	Grid,
-	Group,
-	Stack,
-	Text,
-	UnstyledButton,
-} from "@mantine/core";
+// "use client";
+
+import { Box, Group, Stack, Text, UnstyledButton } from "@mantine/core";
 import styles from "./movieid.module.css";
 import Image from "next/image";
 import imgEmptyMovie from "../public/images/empty-movie-large.png";
@@ -14,6 +8,7 @@ import ImgStar from "../public/icons/icon-star.svg";
 import MovieHading from "../components/MovieHeading/MovieHeading";
 import type { SingleMovie } from "../types/appTypes";
 import imgBlank from "../public/images/no-poster.png";
+import { POSTER_BASE_URL } from "../lib/baseUrl";
 
 const movieid = ({
 	duration,
@@ -21,12 +16,17 @@ const movieid = ({
 	budget,
 	grossWorldwide,
 	genres,
+	poster,
+	rating,
+	title,
+	year,
 }: SingleMovie) => {
 	const production = [
 		{ image: imgBlank, filmStudio: "Castle Rock Entertainment" },
 		{ image: imgBlank, filmStudio: "Darkwoods Productions" },
 		{ image: imgBlank, filmStudio: "Warner Bros. Pictures" },
 	];
+
 	return (
 		<Stack className={styles.container}>
 			<Box mb={20}>breadcrumbs</Box>
@@ -35,14 +35,17 @@ const movieid = ({
 			<Group className={styles.section}>
 				<Image
 					className={styles.poster}
-					src={imgEmptyMovie}
-					alt="poster"
+					src={poster ? poster : imgEmptyMovie}
+					alt={title}
+					width={250}
+					height={352}
 				/>
 				<Stack className={styles.info}>
 					<MovieHading
-						title="Movie Title"
-						year="1995"
-						rating="9"
+						title={title}
+						year={year}
+						rating={rating}
+						popularity={88}
 					/>
 					<Group className={styles.details}>
 						<Box className={styles.detailsCred}>

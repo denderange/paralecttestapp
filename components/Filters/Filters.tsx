@@ -1,16 +1,17 @@
 import { Flex, Group, Select, Stack, Title, Button, Box } from "@mantine/core";
+import { setInputRatingNums } from "../../lib/setInputRatingNums";
 import Arrow from "../../public/icons/icon-arrow.svg";
 import styles from "./filters.module.css";
-import { useState } from "react";
 
-interface Genre {
+interface IGenre {
 	id: number;
 	name: string;
 }
 
 const Filters = ({ genres }: any) => {
-	// const genreNames: string[] = genres.map((genre: Genre) => genre.name);
-	const genreNames = [""];
+	const genreNames = genres.map((genre: IGenre) => genre.name);
+
+	// console.log("genres : " + genres);
 
 	return (
 		<Box
@@ -57,7 +58,7 @@ const Filters = ({ genres }: any) => {
 							className={styles.filterInput}
 							label="Ratings"
 							placeholder="From"
-							data={["React", "Angular", "Vue", "Svelte"]}
+							data={setInputRatingNums()}
 							w={137}
 						/>
 						<Select
@@ -65,7 +66,7 @@ const Filters = ({ genres }: any) => {
 							pt={10}
 							label=" "
 							placeholder="To"
-							data={["React", "Angular", "Vue", "Svelte"]}
+							data={setInputRatingNums().reverse()}
 							w={137}
 						/>
 					</Flex>

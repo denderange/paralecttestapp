@@ -12,6 +12,19 @@ const nextConfig = {
 
     return config
   },
+
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: 'https://api.themoviedb.org/3/:path*',
+      }
+    ];
+  },
+
+  images: { 
+    domains: [ "image.tmdb.org"], 
+  },
 };
 
 export default nextConfig;
