@@ -11,10 +11,13 @@ import {
 import styles from "./ratedMovies.module.css";
 import IconSearch from "../public/icons/icon-search.svg";
 import Movies from "../components/Movies/Movies";
+import EmptyRated from "../components/EmptyRated/EmptyRated";
 
 type ratedMoviesProps = {};
 
 const ratedMovies = ({ searchProps }: { searchProps: TextInputProps }) => {
+	const ratedMovies = [];
+
 	return (
 		<Stack className={styles.pageContentWrapper}>
 			{/* page header */}
@@ -38,7 +41,8 @@ const ratedMovies = ({ searchProps }: { searchProps: TextInputProps }) => {
 				</Box>
 			</Group>
 
-			<Movies />
+			{ratedMovies.length === 0 && <EmptyRated />}
+			{/* <Movies /> */}
 		</Stack>
 	);
 };

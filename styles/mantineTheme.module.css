@@ -1,0 +1,6 @@
+.input {
+  &:focus, &:hover {
+    outline: 1px solid var(--color-purple-500);
+    border: 1px solid transparent;
+  }
+}

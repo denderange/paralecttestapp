@@ -1,7 +1,18 @@
-import { Flex, Group, Select, Stack, Title, Button, Box } from "@mantine/core";
+import {
+	Flex,
+	Group,
+	Select,
+	Stack,
+	Title,
+	Button,
+	Box,
+	MultiSelect,
+} from "@mantine/core";
 import { setInputRatingNums } from "../../lib/setInputRatingNums";
+import { setInputReleaseYear } from "../../lib/setInputReleaseYear";
 import Arrow from "../../public/icons/icon-arrow.svg";
 import styles from "./filters.module.css";
+import { useState } from "react";
 
 interface IGenre {
 	id: number;
@@ -9,9 +20,19 @@ interface IGenre {
 }
 
 const Filters = ({ genres }: any) => {
-	const genreNames = genres.map((genre: IGenre) => genre.name);
+	const [genreValue, setGenreValue] = useState<string[]>([]);
 
+	const genreNames: string[] = genres.map((genre: IGenre) => genre.name);
+	const sortByItems = [
+		"Most Popular",
+		"Latest Popular",
+		"Most Rated",
+		"Least Rated",
+		"Most Voted",
+		"Least Voted",
+	];
 	// console.log("genres : " + genres);
+	// console.log(setInputReleaseYear());
 
 	return (
 		<Box
@@ -28,41 +49,66 @@ const Filters = ({ genres }: any) => {
 			</Title>
 			<Group
 				gap={16}
-				align={"end"}
+				align={"start"}
 				mb={24}
 			>
 				<Stack>
-					<Select
-						className={styles.filterInput}
-						label="Ganres"
-						placeholder="Select ganre"
-						data={genreNames}
+					<MultiSelect
+						classNames={{
+							label: styles.inputLabel,
+							input: styles.genresInput,
+							dropdown: styles.dropdown,
+							option: styles.option,
+							pill: styles.pill,
+							pillsList: styles.pillsList,
+						}}
+						label="Genres"
+						placeholder="Select genre"
 						w={283}
 						rightSection={<Arrow />}
+						data={genreNames}
+						value={genreValue}
+						onChange={setGenreValue}
+						withCheckIcon={false}
+						maxValues={3}
 					/>
 				</Stack>
 				<Stack>
 					<Select
-						className={styles.filterInput}
+						classNames={{
+							label: styles.inputLabel,
+							input: styles.input,
+							dropdown: styles.dropdown,
+							option: styles.option,
+						}}
 						label="Release year"
 						placeholder="Select release year"
-						data={["React", "Angular", "Vue", "Svelte"]}
+						data={setInputReleaseYear().reverse()}
 						w={283}
 						rightSection={<Arrow />}
 					/>
 				</Stack>
 				<Stack>
-					{/* <Text>Ratings</Text> */}
 					<Flex gap={8}>
 						<Select
-							className={styles.filterInput}
+							classNames={{
+								label: styles.inputLabel,
+								input: styles.input,
+								dropdown: styles.dropdown,
+								option: styles.option,
+							}}
 							label="Ratings"
 							placeholder="From"
 							data={setInputRatingNums()}
 							w={137}
 						/>
 						<Select
-							className={styles.filterInput}
+							classNames={{
+								label: styles.inputLabel,
+								input: styles.input,
+								dropdown: styles.dropdown,
+								option: styles.option,
+							}}
 							pt={10}
 							label=" "
 							placeholder="To"
@@ -71,7 +117,7 @@ const Filters = ({ genres }: any) => {
 						/>
 					</Flex>
 				</Stack>
-				<Stack>
+				<Stack style={{ alignSelf: "center" }}>
 					<Button
 						className="btn-text-grey"
 						variant="transparent"
@@ -84,10 +130,15 @@ const Filters = ({ genres }: any) => {
 
 			<Flex justify={"end"}>
 				<Select
-					className={styles.filterInput}
+					classNames={{
+						label: styles.inputLabel,
+						input: styles.input,
+						dropdown: styles.dropdown,
+						option: styles.option,
+					}}
 					label="Sort by"
 					placeholder="Most popular"
-					data={["React", "Angular", "Vue", "Svelte"]}
+					data={sortByItems}
 					w={283}
 					rightSection={<Arrow />}
 				/>

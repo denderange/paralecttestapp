@@ -1,6 +1,15 @@
-export const formatPopularity = (popularity: number) => {
-  if(popularity < 1e3) return popularity;
-  if(popularity >= 1e3 && popularity <= 1e6) return +(popularity/1e3).toFixed(1) + "K";
-  if(popularity >= 1e6 && popularity <= 1e9) return +(popularity/1e6).toFixed(1) + "M";
-  if(popularity >= 1e9 && popularity <= 1e12) return +(popularity/1e9).toFixed(1) + "B";
+export const formatPopularity = (popularity: number | null) => {
+  if(popularity){
+    const prefixes = ['', 'K', 'M', 'G', 'T', 'P', 'E'];
+    let prefixIndex = 0;
+
+    while (popularity >= 1000) {
+      popularity /= 1000;
+      prefixIndex++;
+    }
+
+    const formattedNumber = popularity.toFixed(1) + (prefixes[prefixIndex] || '');
+    return formattedNumber;
+
+  }else return ''
 }

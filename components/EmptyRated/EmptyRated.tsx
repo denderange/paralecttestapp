@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import imgEmptyRated from "../../public/images/empty-rated.png";
 import styles from "./emptyRated.module.css";
+import Link from "next/link";
 
 const EmptyRated = () => (
 	<Center>
@@ -13,7 +14,12 @@ const EmptyRated = () => (
 				alt="empty rated image"
 			/>
 			<Text className={styles.text}>You haven&apos;t rated any films yet</Text>
-			<Button className="btnPrimaryM">Find movies</Button>
+			<Link
+				className="btnPrimaryM"
+				href={"/"}
+			>
+				Find movies
+			</Link>
 		</Stack>
 	</Center>
 );

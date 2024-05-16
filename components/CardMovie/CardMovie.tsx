@@ -1,86 +1,92 @@
-import { Group, Stack, Text } from "@mantine/core";
+import { Group, Tooltip, Stack, Text } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import MovieHeading from "../MovieHeading/MovieHeading";
 import ButtonRating from "../ButtonRating/ButtonRating";
-import type { MovieHadingProps } from "../../types/appTypes";
 import imgNoPoster from "../../public/images/no-poster.png";
 import styles from "./cardMovie.module.css";
+import type { GenreT } from "../../types/appTypes";
+import { getGenresNames } from "../../lib/getGenreNames";
+import ModalRating from "../ModalRating/ModalRating";
+import { useDisclosure } from "@mantine/hooks";
 
 type CardMovieProps = {
 	poster: string | null;
-	genres: string[] | string;
-	btnClick: () => void;
+	genre_ids: number[];
+	genres: GenreT[];
+	overview: string | null;
+	title: string;
+	year: string;
+	rating: number;
+	popularity: number | null;
 };
 
 const CardMovie = ({
 	poster,
+	genre_ids,
 	genres,
-	btnClick,
 	title,
 	year,
 	rating,
 	popularity,
-}: CardMovieProps & MovieHadingProps) => {
-	// const handleBtnStar = (
-	// 	e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
-	// ) => {
-	// 	e.preventDefault();
-	// 	btnClick();
-	// };
+	overview,
+}: CardMovieProps) => {
+	const [opened, { open, close }] = useDisclosure(false);
+	const overviewText = overview?.slice(0, 250) + "...";
+	const genreNames = getGenresNames(genres, genre_ids);
 
 	return (
-		<Link href="/movieid">
-			<Group
-				className={styles.card}
-				gap={0}
-			>
-				<Image
-					className={styles.img}
-					src={poster ? poster : imgNoPoster}
-					alt={title}
-					width={119}
-					height={170}
-				/>
-
-				<Stack className={styles.info}>
-					<MovieHeading
-						title={title}
-						year={year}
-						rating={rating}
-						popularity={popularity}
-					/>
-
-					<Text className={styles.genres}>
-						<span>Genres </span>
-						{genres}
-					</Text>
-				</Stack>
-
-				<ButtonRating
-					rating={9}
-					btnClick={btnClick}
-				/>
-
-				{/* <Box className={styles.starCount}>
-					<HoverCard
-						width={280}
-						shadow="md"
+		<>
+			<Link href="/movieid">
+				<Group
+					className={styles.card}
+					gap={0}
+				>
+					<Tooltip
+						className={styles.overview}
+						multiline
+						w={220}
+						withArrow
+						transitionProps={{ duration: 200 }}
+						label={overviewText}
+						disabled={!overview}
 					>
-						<HoverCard.Target>
-							<UnstyledButton onClick={(e) => handleBtnStar(e)}>
-								<IconStar className={styles.star} />
-							</UnstyledButton>
-						</HoverCard.Target>
-						<HoverCard.Dropdown className={styles.dropdown}>
-							<Text size="sm">Rate this movie</Text>
-						</HoverCard.Dropdown>
-					</HoverCard>
+						<Image
+							className={styles.img}
+							src={poster ? poster : imgNoPoster}
+							alt={title}
+							width={119}
+							height={170}
+						/>
+					</Tooltip>
 
-					<span>9</span>
-				</Box> */}
-			</Group>
-		</Link>
+					<Stack className={styles.info}>
+						<MovieHeading
+							title={title}
+							year={year}
+							rating={rating}
+							popularity={popularity}
+						/>
+
+						<Text className={styles.genres}>
+							<span>Genres </span>
+							{genreNames}
+						</Text>
+					</Stack>
+
+					<ButtonRating
+						// rating={9}
+						btnClick={open}
+					/>
+				</Group>
+			</Link>
+
+			<ModalRating
+				opened={opened}
+				close={close}
+				movieTitle={title}
+			/>
+		</>
 	);
 };
 

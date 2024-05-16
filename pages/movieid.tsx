@@ -16,10 +16,11 @@ const movieid = ({
 	budget,
 	grossWorldwide,
 	genres,
-	poster,
-	rating,
+	poster_path,
 	title,
-	year,
+	popularity,
+	vote_average,
+	release_date,
 }: SingleMovie) => {
 	const production = [
 		{ image: imgBlank, filmStudio: "Castle Rock Entertainment" },
@@ -35,7 +36,7 @@ const movieid = ({
 			<Group className={styles.section}>
 				<Image
 					className={styles.poster}
-					src={poster ? poster : imgEmptyMovie}
+					src={poster_path ? poster_path : imgEmptyMovie}
 					alt={title}
 					width={250}
 					height={352}
@@ -43,9 +44,9 @@ const movieid = ({
 				<Stack className={styles.info}>
 					<MovieHading
 						title={title}
-						year={year}
-						rating={rating}
-						popularity={88}
+						year={release_date}
+						rating={vote_average}
+						popularity={popularity}
 					/>
 					<Group className={styles.details}>
 						<Box className={styles.detailsCred}>

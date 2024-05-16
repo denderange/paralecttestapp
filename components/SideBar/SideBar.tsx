@@ -1,16 +1,17 @@
-import { List, Stack } from "@mantine/core";
+import { Stack } from "@mantine/core";
 import React from "react";
 import Logo from "../Logo/Logo";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./sideBar.module.css";
 
-const navLinks = [
-	{ title: "Movies", link: "/" },
-	{ title: "Rated movies", link: "/rated-movies" },
-];
-
 const SideBar = () => {
-	const [active, setActive] = React.useState("Movies");
+	const pathname = usePathname();
+
+	const navLinks = [
+		{ title: "Movies", link: "/" },
+		{ title: "Rated movies", link: "/rated-movies" },
+	];
 
 	return (
 		<Stack className={styles.container}>
@@ -21,10 +22,9 @@ const SideBar = () => {
 					<Link
 						key={title}
 						href={link}
-						className={`${styles.navlink} ${active === title && styles.active}`}
-						onClick={(e) => {
-							setActive(title);
-						}}
+						className={`${styles.navlink} ${
+							pathname === link && styles.active
+						}`}
 					>
 						{title}
 					</Link>

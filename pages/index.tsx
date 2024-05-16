@@ -14,7 +14,10 @@ export default function IndexPage({ genres, results }: any) {
 				{findedMoviesArrayFetchedSampleEmpty.length !== 0 ? (
 					<EmptyMovie />
 				) : (
-					<Movies movies={results} />
+					<Movies
+						movies={results}
+						genres={genres}
+					/>
 				)}
 			</Stack>
 		</>
